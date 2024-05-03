@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="weather-app-container">
+      <header>
+        <form class="search-form" id="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            class="search-form-input"
+            required
+            id="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-submit" />
+        </form>
+      </header>
+      <main class="current-weather">
+        <div class="current-weather-data">
+          <div class="highlights">
+            <h1 id="defined-city"></h1>
+            <ul>
+              <li>
+                <span id="dayTime"></span>,
+                <span id="description"> moderate rain</span>
+              </li>
+              <li>
+                Humidity:
+                <strong
+                  ><span
+                    class="weather-highlights"
+                    id="humidity"
+                  ></span></strong
+                >, Wind:
+                <strong
+                  ><span class="weather-highlights" id="wind"></span
+                ></strong>
+              </li>
+            </ul>
+          </div>
+          <div class="temperature">
+            <h2>
+              <span id="temperature-emoji"></span>
+              <span class="temperature-value" id="temperature-value"></span
+              ><span class="temperature-unit">°C</span>
+            </h2>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <p>
+          This project is coded by
+          <a href="https://github.com/egdbutcher" target="_blank">
+            Emily Butcher</a
+          >, open sourced
+          <a href="https://github.com/egdbutcher/weather-app" target="_blank">
+            on GitHub</a
+          >
+          and hosted on
+          <a
+            href="https://emily-project-weather-app.netlify.app/"
+            target="_blank"
+          >
+            Netlify</a
+          >
+        </p>
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
