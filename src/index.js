@@ -19,6 +19,8 @@ function refreshWeather(response) {
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
   emojiElement.innerHTML = `<img src="${response.data.condition.icon_url}" alt="temperature icon" class="temperature-emoji"/>`;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -49,7 +51,7 @@ function formatDate(date) {
 
 function searchCity(city) {
   let apiKey = "baadfadbb44to892ae4f716502e93fc0";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&unit=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(refreshWeather);
 }
@@ -61,7 +63,18 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "baadfadbb44to892ae4f716502e93fc0";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+
+  console.log(apiUrl);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
   let forecastHtml = "";
 
@@ -98,4 +111,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Chamonix");
-displayForecast();
