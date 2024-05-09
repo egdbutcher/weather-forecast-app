@@ -86,6 +86,29 @@ h2 {
   top: -75px;
 }
 
+.weather-forecast-container {
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.weather-forecast-temperatures {
+  font-size: 14px;
+  color: #d63384;
+}
+
+.weather-forecast-day,
+.weather-forecast-temperature-min {
+  opacity: 0.7;
+}
+
+.weather-forecast-icon,
+.weather-forecast-day {
+  margin-bottom: 10px;
+}
+
 footer {
   text-align: center;
   color: rgba(39, 33, 66, 0.4);
