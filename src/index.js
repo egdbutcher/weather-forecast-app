@@ -9,9 +9,6 @@ function refreshWeather(response) {
   let date = new Date(response.data.time * 1000);
   let emojiElement = document.querySelector("#temperature-emoji");
 
-  // console.log(response.data);
-  // console.log(date);
-
   cityElement.innerHTML = response.data.city;
   timeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
@@ -68,8 +65,6 @@ function getForecast(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(displayForecast);
-
-  console.log(apiUrl);
 }
 
 function formatDay(timestamp) {
@@ -80,8 +75,6 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
-
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
