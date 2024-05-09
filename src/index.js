@@ -72,35 +72,46 @@ function getForecast(city) {
   console.log(apiUrl);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function displayForecast(response) {
   console.log(response.data);
 
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
         <div class="row">
             <div class="col-2">
               <div class="weather-forecast-day">
-                <div class="weather-forecast-date">${day}</div>
-                <div class="weather-forecast-icon">
+                <div class="weather-forecast-date">${formatDay(day.time)}</div>
+                <div>
                   <img
-                    src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png"
-                    alt="weather-forecast-icon"
-                    width="60px"
+                    src="${day.condition.icon_url}"
+                    class="weather-forecast-icon"
                   />
                 </div>
                 <div class="weather-forecast-temperatures">
-                  <span class="weather-forecast-temperature-max"><strong>18°</strong> </span
-                  ><span class="weather-forecast-temperature-min">12°</span>
+                  <span class="weather-forecast-temperature-max"><strong>${Math.round(
+                    day.temperature.maximum
+                  )}°</strong> </span
+                  ><span class="weather-forecast-temperature-min">${Math.round(
+                    day.temperature.minimum
+                  )}°</span>
                 </div>
               </div>
             </div>
           </div>
       `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");

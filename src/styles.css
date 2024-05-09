@@ -109,6 +109,15 @@ h2 {
   margin-bottom: 10px;
 }
 
+.weather-forecast-temperature-min {
+  padding-left: 10px;
+}
+
+.weather-forecast-icon {
+  width: 80px;
+  height: 80px;
+}
+
 footer {
   text-align: center;
   color: rgba(39, 33, 66, 0.4);
